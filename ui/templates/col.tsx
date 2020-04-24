@@ -8,6 +8,7 @@ export const Col = styled.div<ColProps>`
     display: flex;
     flex-direction: column;
     width: 100%;
+    overflow: hidden;
     
     ${p => p.gap && css`
         & > :not(:first-child) {

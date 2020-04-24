@@ -1,11 +1,15 @@
 import React from 'react';
 import Link from 'next/link'
 import styled, { css } from 'styled-components';
+import { useRouter } from 'next/router';
 
 import PlainArrowLeft from '../../public/images/plain-arrow-left.svg';
 
+import ArrowLeft from '../../public/images/left-arrow.svg';
+import ArrowRight from '../../public/images/right-arrow.svg';
+
 interface BackwardButtonProps {
-    text: string;
+    text?: string;
     func?: () => void;
     href?: string;
     mt?: string;
@@ -56,12 +60,16 @@ export const StyledBackwardButton = styled.div<StyledBackwardButtonProp>`
     ${p => p.mt && css`margin-top: ${p.mt};`}
 `;
 
-export const BackwardButton: React.FC<BackwardButtonProps> = ({ text, func }) => (
-    <StyledBackwardButton onClick={func}>
-        <PlainArrowLeft />
-        {text}
-    </StyledBackwardButton>
-)
+export const BackwardButton: React.FC<BackwardButtonProps> = ({mt, text = 'Back', func }) => {
+    const router = useRouter()
+
+    return (
+        <StyledBackwardButton mt={mt} onClick={func ?? router.back}>
+            <PlainArrowLeft />
+            {text}
+        </StyledBackwardButton>
+    )
+}
 
 export const BackToMainButton: React.FC<BackwardButtonProps> = ({ text, href, mt }) => (
     <Link href={href as string}>
@@ -71,3 +79,11 @@ export const BackToMainButton: React.FC<BackwardButtonProps> = ({ text, href, mt
         </StyledBackwardButton>
     </Link>
 )
+
+export const ArrowButtonLeft = styled(ArrowLeft)`
+    cursor: pointer;
+`;
+
+export const ArrowButtonRight = styled(ArrowRight)`
+    cursor: pointer;
+`;

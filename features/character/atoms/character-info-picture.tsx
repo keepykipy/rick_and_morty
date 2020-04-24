@@ -8,6 +8,7 @@ interface CharacterInfoPicProps {
 
 export const StyledCharacterPic = styled.div`
     max-width: 352px;
+    min-width: 352px;
     width: 100%;
     min-height: 512px;
     max-height: 512px;

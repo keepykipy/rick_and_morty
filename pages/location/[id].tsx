@@ -2,7 +2,6 @@ import React from 'react'
 import Head from 'next/head';
 
 import { MainTemplate, Container, BackwardButton } from '../../ui';
-import { CharacterInfo } from '../../features/character';
 import { withApollo } from '../../lib';
 
 const index = () => (
@@ -19,7 +18,7 @@ const index = () => (
                 </Container>
             }
         >
-            <CharacterInfo />
+            JOPA
         </MainTemplate>
     </>
 )

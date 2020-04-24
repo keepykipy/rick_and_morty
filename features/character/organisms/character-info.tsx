@@ -6,9 +6,9 @@ import { useRouter } from 'next/router';
 
 import { apolloErrorHandler } from '../../../lib';
 import { SEARCH_CHARACTER_BY_ID } from '../../../queries';
-import { $character, setCharacter } from '../model';
+import { $character, setCharacter, Episode } from '../model';
 import { CharacterInfoContainer, CharacterInfoPic, CharacterDescProps } from '../atoms';
-import { CharacterDesc } from '../molecules';
+import { CharacterDesc, CharacterInfoEpisodesSlider } from '../molecules';
 import { Row, Col, Loader, Error } from '../../../ui';
 
 export const CharacterInfo:React.FC = () => {
@@ -37,6 +37,11 @@ export const CharacterInfo:React.FC = () => {
                                 <CharacterInfoPic src={character?.image as string} name={character?.name} />
                                 <Col gap="15px">
                                     <CharacterDesc {...character as CharacterDescProps} />
+                                    {
+                                        character?.episode && (
+                                            <CharacterInfoEpisodesSlider episodes={character.episode as Episode[]} />
+                                        )
+                                    }
                                 </Col>
                             </Row>
                         </CharacterInfoContainer>
