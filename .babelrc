@@ -1,0 +1,16 @@
+{
+    "presets": [
+        "next/babel"
+    ],
+    "plugins": [
+        "graphql-tag",
+        "inline-react-svg",
+        "@babel/syntax-dynamic-import",
+        [
+            "styled-components",
+            {
+                "ssr": true
+            }
+        ]
+    ]
+}
