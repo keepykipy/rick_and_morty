@@ -12,8 +12,8 @@ export interface CharactersInfoProp {
 }
 
 export interface CharactersResult {
-    info?: CharactersInfoProp;
-    results?: Character[];
+    info?: CharactersInfoProp | null;
+    results?: Character[] | null;
 }
 
 export const errorHandler = createEvent();

@@ -64,7 +64,11 @@ export const SearchBar = () => {
             searchCharacter();
             
             router.push(`/?${queryParams}`)
+
+            return;
         }
+
+        router.push('/');
     }, [debouncedValue]);
 
     const onSearchInputChange = (event: any) => {

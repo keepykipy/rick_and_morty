@@ -11,7 +11,6 @@ import { SearchResultsContainer, SearchArrowLeft, SearchArrowRight } from '../at
 export const SearchResult = () => {
     const loading = useStore($loading);
     const characters = useStore($characters);
-    const { info, results }: any = characters;
     const gap = '15px';
 
     return (
@@ -20,7 +19,7 @@ export const SearchResult = () => {
                 loading
                     ? <Loader />
                     : (
-                        characters
+                        characters?.results
                             ? (
                                 <Row 
                                     mt={gap} 
@@ -28,7 +27,7 @@ export const SearchResult = () => {
                                     wrap='wrap'
                                 >
                                     {
-                                        results?.map(({ name, image, id }: Character) => (
+                                        characters?.results?.map(({ name, image, id }: Character) => (
                                             <CharacterCard
                                                 key={id}
                                                 gap={gap}
@@ -46,8 +45,8 @@ export const SearchResult = () => {
                     )
                     
             }
-            { info?.prev && <SearchArrowLeft onClick={() => prevPage(info?.prev as number)} /> }
-            { info?.next && <SearchArrowRight onClick={() => nextPage(info?.next as number)} /> }
+            { characters?.info?.prev && <SearchArrowLeft onClick={() => prevPage(characters?.info?.prev as number)} /> }
+            { characters?.info?.next && <SearchArrowRight onClick={() => nextPage(characters?.info?.next as number)} /> }
         </SearchResultsContainer>
     )
 }

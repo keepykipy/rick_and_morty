@@ -82,8 +82,32 @@ export const BackToMainButton: React.FC<BackwardButtonProps> = ({ text, href, mt
 
 export const ArrowButtonLeft = styled(ArrowLeft)`
     cursor: pointer;
+    
+    circle {
+        transition: all .2s ease-in-out;
+        fill-opacity: .2;
+        fill: #000000;
+    }
+
+    &:hover {
+        circle {
+            fill-opacity: .1;
+        }
+    }
 `;
 
 export const ArrowButtonRight = styled(ArrowRight)`
     cursor: pointer;
+    
+    circle {
+        transition: all .2s ease-in-out;
+        fill-opacity: .2;
+        fill: #000000;
+    }
+
+    &:hover {
+        circle {
+            fill-opacity: .1;
+        }
+    }
 `;

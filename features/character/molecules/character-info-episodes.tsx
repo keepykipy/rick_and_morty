@@ -11,23 +11,53 @@ export interface Episodes {
 }
 
 const StyledCharacterInfoEpisodesSliderWrap = styled.div`
+    position: relative;
+    
     & > div {
         padding-top: 30px;
         padding-bottom: 30px;
         padding-left: 10px;
         padding-right: 10px;
     }
+
+    .slider-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
+
+        &.swiper-button-disabled {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        &.button-prev {
+            left: 0;
+        }
+
+        &.button-next {
+            right: 48px;
+        }
+    }
 `;
 
 export const CharacterInfoEpisodesSlider: React.FC<Episodes> = ({ episodes }) => {
     const params = {
-        slidesPerView: 3,
+        slidesPerView: 2,
         spaceBetween: 30,
+        noSwiping: episodes?.length < 2 ?? false,
+        rebuildOnUpdate: true,
+        grabCursor: true,
+        navigation: {
+            nextEl: '.button-next',
+            prevEl: '.button-prev'
+        },
+        renderPrevButton: () => <ArrowButtonLeft className="slider-button button-prev" />,
+        renderNextButton: () => <ArrowButtonRight className="slider-button button-next" />,
     }
 
     return (
         <StyledCharacterInfoEpisodesSliderWrap>
-            <ArrowButtonLeft />
             <Swiper {...params}>
                 {
                     episodes?.map(episode => (
@@ -35,7 +65,6 @@ export const CharacterInfoEpisodesSlider: React.FC<Episodes> = ({ episodes }) =>
                     ))
                 }
             </Swiper>
-            <ArrowButtonRight />
         </StyledCharacterInfoEpisodesSliderWrap>
     )
 }
