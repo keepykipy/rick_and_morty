@@ -1,70 +1,63 @@
 import React from 'react';
 import styled from 'styled-components';
-import Swiper from 'react-id-swiper';
 
 import { CharacterInfoEpisode } from '../atoms';
 import { Episode } from '../model';
-import { ArrowButtonLeft, ArrowButtonRight } from '../../../ui';
+import { device } from '../../../ui';
 
 export interface Episodes {
     episodes: Episode[];
 }
 
-const StyledCharacterInfoEpisodesSliderWrap = styled.div`
+const StyledCharacterInfoEpisodesWrap = styled.div`
     position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    padding: 10px;
+    margin-left: -20px;
+    margin-right: -10px;
+    margin-bottom: -20px;
+
+    @media ${device.laptop} {
+        margin: 0;
+        margin-left: -10px;
+    }
     
     & > div {
-        padding-top: 30px;
-        padding-bottom: 30px;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    .slider-button {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 2;
-
-        &.swiper-button-disabled {
-            opacity: 0;
-            pointer-events: none;
+        flex: 0 1 calc(33.3333% - 20px);
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 20px;
+        
+     
+        @media (max-width: 1360px) {
+            flex: 0 1 calc(50% - 20px);
         }
 
-        &.button-prev {
-            left: 0;
-        }
+        @media ${device.laptop} {
+            flex: 0 1 100%;
+            margin: 0;
+            margin-bottom: 10px;
 
-        &.button-next {
-            right: 48px;
+            &:last-child {
+                margin-bottom: 0;
+            }
         }
     }
 `;
 
-export const CharacterInfoEpisodesSlider: React.FC<Episodes> = ({ episodes }) => {
-    const params = {
-        slidesPerView: 2,
-        spaceBetween: 30,
-        noSwiping: episodes?.length < 2 ?? false,
-        rebuildOnUpdate: true,
-        grabCursor: true,
-        navigation: {
-            nextEl: '.button-next',
-            prevEl: '.button-prev'
-        },
-        renderPrevButton: () => <ArrowButtonLeft className="slider-button button-prev" />,
-        renderNextButton: () => <ArrowButtonRight className="slider-button button-next" />,
-    }
+export const CharacterInfoEpisodes: React.FC<Episodes> = ({ episodes }) => {
 
     return (
-        <StyledCharacterInfoEpisodesSliderWrap>
-            <Swiper {...params}>
+        <>
+            <h2>Episodes:</h2>
+            <StyledCharacterInfoEpisodesWrap>
                 {
                     episodes?.map(episode => (
-                        <CharacterInfoEpisode key={episode?.name} className="swiper-slide" {...episode} />
+                        <CharacterInfoEpisode key={episode?.name} {...episode} />
                     ))
                 }
-            </Swiper>
-        </StyledCharacterInfoEpisodesSliderWrap>
+            </StyledCharacterInfoEpisodesWrap>
+        </>
     )
 }

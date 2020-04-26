@@ -21,7 +21,7 @@ export const SearchArrowRight = styled(ArrowRight)`
     position: fixed;
     top: 50%;
     right: 48px;
-    transform: translate(-50%, -50%);
+    transform: translate(50%, -50%);
     cursor: pointer;
     transition: filter .2s;
     filter: blur(1px);

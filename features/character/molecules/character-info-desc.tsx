@@ -13,6 +13,10 @@ export const CharacterDescWrap = styled.div`
     & > div {
         flex: 0 1 33.333%;
         margin-bottom: 30px;
+     
+        @media (max-width: 1360px) {
+            flex: 0 1 50%;
+        }
     }
 `;
 

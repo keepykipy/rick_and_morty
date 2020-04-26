@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { Episode } from '../model'
 
-interface EpisodeSlideItem extends Episode {
+interface EpisodeItem extends Episode {
     className?: string;
 }
 
@@ -56,9 +56,9 @@ const StyledCharacterInfoEpisode = styled.div`
     }
 `;
 
-export const CharacterInfoEpisode: React.FC<EpisodeSlideItem> = ({ air_date, id, name, className }) => {
+export const CharacterInfoEpisode: React.FC<EpisodeItem> = ({ air_date, id, name, className }) => {
     return (
-        <Link href="/location/[id]" as={`/location/${id}`}>
+        <Link href="/episode/[id]" as={`/episode/${id}`}>
             <StyledCharacterInfoEpisode className={className}>
                 <div>{name}</div>
                 <span>{air_date}</span>

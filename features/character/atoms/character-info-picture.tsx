@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { device } from '../../../ui';
 
 interface CharacterInfoPicProps {
     src: string;
@@ -15,6 +16,7 @@ export const StyledCharacterPic = styled.div`
     border-radius: 14px;
     overflow: hidden;
     position: relative;
+    margin-right: 30px;
 
     & > img {
         width: 100%;
@@ -47,6 +49,18 @@ export const StyledCharacterPic = styled.div`
         line-height: 1.2;
         letter-spacing: normal;
         color: #ffffff;
+    }
+
+    @media ${device.laptop} {
+        margin-bottom: 30px;
+        margin-right: 0;
+        max-width: 100%;
+        min-width: 270px;
+    }
+
+    @media ${device.tablet} {
+        min-height: 300px;
+        max-height: 300px;
     }
 `;
 

@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components"
+import { device } from "../themes"
 
 interface RowProps {
     gap?: string;
@@ -28,4 +29,9 @@ export const Row = styled.div<RowProps>`
             margin-bottom: calc(${p.gap} * 2);
         }
     `}
+
+    @media ${device.laptop} {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 `

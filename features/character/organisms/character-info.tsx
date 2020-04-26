@@ -8,8 +8,8 @@ import { apolloErrorHandler } from '../../../lib';
 import { SEARCH_CHARACTER_BY_ID } from '../../../queries';
 import { $character, setCharacter, Episode } from '../model';
 import { CharacterInfoContainer, CharacterInfoPic, CharacterDescProps } from '../atoms';
-import { CharacterDesc, CharacterInfoEpisodesSlider } from '../molecules';
-import { Row, Col, Loader, Error } from '../../../ui';
+import { CharacterDesc, CharacterInfoEpisodes } from '../molecules';
+import { Row, Loader, Error, Col } from '../../../ui';
 
 export const CharacterInfo:React.FC = () => {
     const router = useRouter();
@@ -33,13 +33,13 @@ export const CharacterInfo:React.FC = () => {
                     ? <Error />
                     : (
                         <CharacterInfoContainer>
-                            <Row gap="15px">
+                            <Row>
                                 <CharacterInfoPic src={character?.image as string} name={character?.name} />
-                                <Col gap="15px">
+                                <Col>
                                     <CharacterDesc {...character as CharacterDescProps} />
                                     {
                                         character?.episode && (
-                                            <CharacterInfoEpisodesSlider episodes={character.episode as Episode[]} />
+                                            <CharacterInfoEpisodes episodes={character.episode as Episode[]} />
                                         )
                                     }
                                 </Col>

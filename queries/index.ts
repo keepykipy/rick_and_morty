@@ -57,3 +57,17 @@ export const SEARCH_CHARACTER_BY_ID = gql`
         }
     }
 `
+
+export const GET_EPISODE_BY_ID = gql`
+    query getEpisodeById($episodeId: ID!) {
+        episode(id: $episodeId) {
+            name
+            air_date
+            characters {
+                id
+                name
+                image
+            }
+        }
+    }
+`;
