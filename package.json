@@ -40,8 +40,5 @@
         "normalize.css": "^8.0.1",
         "typescript": "3.8.3"
     },
-    "license": "ISC",
-    "resolutions": {
-        "js-yaml": "^3.13.1"
-    }
+    "license": "ISC"
 }
